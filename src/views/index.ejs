@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edderest</title>
+  <!-- Styles -->
+  <style>
+    .navbar-brand {
+      font-family: 'Dancing Script', cursive;
+      font-size: 5rem;
+    }
+  </style>
+  <%- include("partials/head") %>
+</head>
+
+<body class="bg-dark bg-opacity-75">
+  <%- include("partials/navigation") %>
+
+    <div class="container p-4">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <% images.forEach(function(img){%>
+          <div class="col">
+            <div class="card animate__animated animate__fadeInUp">
+              <img src="<%= img.path %>" alt="<%= img.filename %>" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <%= img.title %>
+                </h5>
+                <p class="card-text">
+                  <%= img.description %>
+                </p>
+                <p class="card-text">
+                  <b>Uploaded:</b>
+                  <%= format(img.created_at) %>
+                </p>
+                <a href="/image/<%= img.id %>" class="btn btn-outline-primary">View Image</a>
+              </div>
+            </div>
+          </div>
+          <%}) %>
+      </div>
+    </div>
+
+    <%- include("partials/bodyfooter") %>
+</body>
+
+</html>
