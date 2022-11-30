@@ -13,7 +13,7 @@ router.get('/', isAuthenticated, async (req, res) => {
     username: 1,
     _id: 0,
   });
-  // console.log(images);
+  console.log(images);
   res.render('index', { images });
 });
 
