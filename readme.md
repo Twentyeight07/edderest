@@ -4,7 +4,10 @@ Hi there 👋🏼
 This is an app like Pinterest (thats the reason of the name xd) you can upload images, see it and delete it. In further version I want to add user session
 
 - ✅ Save images in database and Cloudinary
-- ⌛ Soon: user session
+- ✅ User session
+- ✅ Users saved in DB and password cifrated 🔐
+- ✅ EndPoints secured 🔐
+- ✅ All users can see all images uploaded to the app but only can delete the ones they uploaded. Unless they are administrators
 
   live test: [Edderest](https://edderest-production.up.railway.app)
 
