@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edderest - Signup</title>
+  <%- include("partials/head") %>
+</head>
+
+<body class="bg-dark bg-opacity-75">
+  <%- include('partials/navigation') %>
+    <%- include('partials/error') %>
+      <%- include("partials/success") %>
+
+
+
+        <div class='container p-4'>
+          <div class='row'>
+            <div class='col-md-4 mx-auto'>
+              <div class='card text-center'>
+                <div class='card-header bg-dark text-white'>
+                  <h3>Sign Up</h3>
+                </div>
+                <div class='card-body'>
+                  <form action='/signup' method='post' autocomplete="off">
+                    <div class='form-floating form-group'>
+                      <input autocomplete="off" type='text' name='fullname' id='fullname' placeholder='Fullname'
+                        class='form-control mb-3 text-center' autofocus />
+                      <label for="fullname">Full name</label>
+                    </div>
+                    <div class='form-floating form-group mb-3'>
+                      <input autocomplete="off" type='text' name='username' id='username' placeholder='Username'
+                        class='form-control text-center' required />
+                      <label for="username">Username*</label>
+                    </div>
+                    <div class='form-floating form-group'>
+                      <input autocomplete="off" type='password' name='password' id='password' placeholder='Password'
+                        class='form-control mb-2 text-center' required />
+                      <label for="password">Password*</label>
+                    </div>
+                    <div class='form-floating form-group'>
+                      <input autocomplete="off" type='password' name='confirm_password' id='confirm_password'
+                        placeholder='Confirm Password' class='form-control mb-2 text-center' required />
+                      <label for="confirm_password">Confirm Password*</label>
+                    </div>
+                    <div class='form-group'>
+                      <button class='btn btn-success btn-block'>
+                        Sign Up
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <%- include("partials/bodyfooter") %>
+</body>
+
+</html>

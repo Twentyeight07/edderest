@@ -4,18 +4,26 @@ import { uploader } from '../cloudinary.js';
 import { multerUploads } from '../multer.js';
 
 import { Image } from '../models/Image.js';
+import { User } from '../models/Users.js';
+import { isAuthenticated } from '../lib/helpers.js';
 
-router.get('/', async (req, res) => {
-  const images = await Image.find();
+router.get('/', isAuthenticated, async (req, res) => {
+  const images = await Image.find().populate('userId', {
+    fullname: 1,
+    username: 1,
+    _id: 0,
+  });
+  // console.log(images);
   res.render('index', { images });
 });
 
-router.get('/upload', (req, res) => {
+router.get('/upload', isAuthenticated, (req, res) => {
   res.render('upload');
 });
 
-router.post('/upload', multerUploads, async (req, res) => {
+router.post('/upload', isAuthenticated, multerUploads, async (req, res) => {
   const image = new Image();
+  const user = await User.findById(req.user.id);
   const options = {
     use_filename: true,
     unique_filename: false,
@@ -40,22 +48,30 @@ router.post('/upload', multerUploads, async (req, res) => {
     image.size = req.file.size;
     image.created_at = Date.now();
     image.cloudinary_id = await imageId;
+    image.userId = req.user.id;
 
     await image.save();
 
+    user.images.concat(await image._id);
+    await user.save();
+    // console.log(user);
+
+    req.flash('success_msg', 'Image uploaded! :) ');
     res.redirect('/');
   } catch (err) {
     console.log(err);
   }
 });
 
-router.get('/image/:id', async (req, res) => {
+router.get('/image/:id', isAuthenticated, async (req, res) => {
   const { id } = req.params;
-  const image = await Image.findById(id);
-  res.render('profile', { img: image });
+  const image = await Image.findById(id).populate('userId');
+  const isOwner = image.userId._id == req.user.id;
+  const isAdmin = req.user.admin;
+  res.render('picture', { img: image, owner: isOwner, admin: isAdmin });
 });
 
-router.get('/image/:id/delete', async (req, res) => {
+router.get('/image/:id/delete', isAuthenticated, async (req, res) => {
   const { id } = req.params;
   const image = await Image.findByIdAndDelete(id);
   await uploader

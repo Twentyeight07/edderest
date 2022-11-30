@@ -10,6 +10,10 @@ const imageSchema = new Schema({
   size: { type: Number },
   created_at: { type: Date, default: Date.now() },
   cloudinary_id: { type: String },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
 });
 
 export const Image = model('Image', imageSchema);

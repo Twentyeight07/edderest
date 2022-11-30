@@ -6,10 +6,26 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav ms-auto d-grip ">
-        <a class="nav-link active btn btn-outline-success text-light" aria-current="page" href="/upload">Add new Image
-          <i class="fa-regular fa-square-plus"></i></a>
-      </div>
+      <%if(user){%>
+        <div class="navbar-nav ms-auto ">
+          <a class="nav-link btn btn-outline-success text-light" aria-current="page" href="/upload">Add new Image
+            <i class="fa-regular fa-square-plus"></i></a>
+        </div>
+        <%}%>
+          <div class="nav-item dropdown ms-auto me-5 w-auto p-3">
+            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Actions <i class="fa-solid fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-menu text-center">
+              <%if(!user){ %>
+                <a class="dropdown-item" href="/signup">SignUp</a>
+                <a class="dropdown-item" href="/signin">SignIn</a>
+                <%}%>
+                  <%if(user){ %>
+                    <a class="dropdown-item" href="/logout">LogOut</a>
+                    <%}%>
+            </div>
+          </div>
     </div>
   </div>
 </nav>

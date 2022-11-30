@@ -36,8 +36,10 @@
             </p>
             <div class="d-grid gap-3 col-3 mx-auto">
               <a href="/" class="btn btn-outline-primary">Back to Images <i class="fa-regular fa-image"></i></a>
-              <a onclick="isDelete('<%= img.id %>')" class="btn btn-outline-danger">Delete Image <i
-                  class="fa-solid fa-triangle-exclamation"></i></a>
+              <%if(owner || admin){%>
+                <a onclick="isDelete('<%= img.id %>')" class="btn btn-outline-danger">Delete Image <i
+                    class="fa-solid fa-triangle-exclamation"></i></a>
+                <%}%>
             </div>
           </div>
         </div>
