@@ -1,7 +1,7 @@
 # Edderest app
 
 Hi there 👋🏼
-This is an app like Pinterest (thats the reason of the name xd) you can upload images, see it and delete it. In further version I want to add user session
+This is an app like Pinterest (thats the reason of the name xd) you can upload images, see it and delete it.
 
 - ✅ Save images in database and Cloudinary
 - ✅ User session
