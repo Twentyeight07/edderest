@@ -9,6 +9,6 @@ This is an app like Pinterest (thats the reason of the name xd) you can upload i
 - ✅ EndPoints secured 🔐
 - ✅ All users can see all images uploaded to the app but only can delete the ones they uploaded. Unless they are administrators
 
-  live test: [Edderest](https://edderest-production.up.railway.app)
+  live test: [Edderest](https://edderest-production.up.railway.app/)
 
 if you want to contact me for any reason, this is my email: [eduardofreites1999@gmail.com](mailto:eduardofreites1999@gmail.com)
